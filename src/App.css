@@ -37,3 +37,30 @@
   height: 10%;
   width: 10%
 }
+.name{
+  margin-left: 5%;
+}
+.phone{
+  margin-right: 2%;
+}
+.address{
+  margin-left: 3%;
+}
+.email{
+  margin-left: 5%;
+}
+.password{
+  margin-left: 2%;
+}
+.date{
+  margin-left: 2%;
+}
+.security{
+  margin-right: 4%;
+}
+.answer{
+margin-left: 4%;
+}
+.login{
+  margin-left: 2%;
+}

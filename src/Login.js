@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import { Redirect } from "react-router-dom";
+import './App.css';
 class Login extends Component {
   constructor(){
     super()
@@ -11,6 +12,7 @@ class Login extends Component {
       user: null
     }
   }
+  
   initialState=()=>{
    this.setState({
     password:"",
@@ -37,11 +39,19 @@ class Login extends Component {
       .then(res => {
         if (res.status === 200) {
           res.json().then(responseJSON => {
-            alert("Login Successfull");
             this.setState({
               loginSuccess: true,
               user: responseJSON
             })
+            localStorage.setItem('file', responseJSON.file);
+            localStorage.setItem('name', responseJSON.name);
+            localStorage.setItem('phone_Number', responseJSON.phone_Number);
+            localStorage.setItem('address', responseJSON.address); 
+            localStorage.setItem('password', responseJSON.password);
+            localStorage.setItem('dateOfBirth', responseJSON.dateOfBirth);
+            localStorage.setItem('security_Question', responseJSON.security_Question);
+            localStorage.setItem('security_Answer', responseJSON.security_Answer);
+            localStorage.setItem('password', responseJSON.password);
           });
         } else if(res.status === 404) {
           alert("Invalid Email or Password")
@@ -56,9 +66,9 @@ class Login extends Component {
           <center>
             <h3>User Login</h3><br></br>
             <form onSubmit={(event) => this.handleClick(event)}>
-              email:<input required type="email" name='email'value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
-              password:<input required type="text" name='password'value={this.state.password} onChange={this.handleChange}/><br></br><br></br><br></br>
-              <button type='submit'>Login</button>
+              email:<input className="login" required type="email" name='email'value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
+              password:<input required type="password" name='password'value={this.state.password} onChange={this.handleChange}/><br></br><br></br>
+              <button className="login" type='submit'>Login</button>
             </form>
           </center>
         </div>

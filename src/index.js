@@ -8,6 +8,7 @@ import Home from './Home';
 import Registration from './Registration';
 import ProfilePage from './ProfilePage';
 import Login from './Login';
+import Logout from './Logout';
 import Error from './Error'
 import history from './history';
 //import ImgToBase64 from 'react-native-image-base64';
@@ -25,6 +26,7 @@ const Data = (
     <Route path="/home" component={Home}/>
     <Route path="/registration" component={Registration}/>
     <Route path="/login" component={Login}/>
+    <Route path="/logout" component={Logout}/>
   </Router>);
 
 

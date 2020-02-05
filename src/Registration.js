@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import moment from 'moment';
+import Login from './Login';
 import ReactFileReader from 'react-file-reader';
 
 class Registration extends Component{
@@ -72,6 +73,9 @@ class Registration extends Component{
     this.initialState();
 
   }
+  update=()=>{
+    window.location.href = '/profile';
+  }
 
   handleClickSelect = (event) => {
     this.setState({
@@ -86,6 +90,7 @@ class Registration extends Component{
     })
     console.log(this.state.file)
   }
+
 
   handleClickUpdate=(event)=>{
     event.preventDefault();
@@ -110,7 +115,6 @@ class Registration extends Component{
     })
     .then(response =>  {
       if (response.status === 200) {
-        alert("updated Successfull");
         return response.json()
       }else{
         alert("please try again")
@@ -120,30 +124,30 @@ class Registration extends Component{
   }
   render(){
     if (Boolean(this.props.location.state)) {
-      console.log(this.state.image)
+      
     return(
       <div>
         <center>
           <form onSubmit={(event) => this.handleClickUpdate(event)}>
             <h2> USER REGISTRATION</h2><br></br>
-            <img  className='circular' src={this.state.file}  /><br></br>
+            <img  className='circular' src={this.state.file} alt="" /><br></br>
             <ReactFileReader handleFiles={this.handleFiles} base64={true}>
                       Upload_Image
                </ReactFileReader><br></br>
-              
-            NAME:<input type="text" name="name" value={this.state.name} required onChange={this.handleChange}/><br></br><br></br>
-            PHONE_NUMBER:<input type="number" name="phone_Number" value={this.state.phone_Number} required  onChange={this.handleChange}/><br></br><br></br>
-            ADDRESS<input type="text" name="address" value={this.state.address} required  onChange={this.handleChange}/><br></br><br></br>
-            EMAIL:<input type="email" name="email"  value={this.state.email} required  onChange={this.handleChange}/><br></br><br></br>
-            PASSWORD:<input type="password" name="password"  value={this.state.password} required  onChange={this.handleChange}/><br></br><br></br>
-            DATE_OF_BIRTH<input type="date" name="dateOfBirth" value={moment(this.state.dateOfBirth).format("YYYY-MM-DD")} required  onChange={this.handleChange}/><br></br><br></br>
-            SECURITY QUESTION <select defaultValue={this.state.security_Question} onClick={(event)=>this.handleClickSelect(event)}>
+            NAME:<input  className="name" type="text" name="name" value={this.state.name} required onChange={this.handleChange}/><br></br><br></br>
+            PHONE_NUMBER:<input  className="phone" type="number" name="phone_Number" value={this.state.phone_Number} required  onChange={this.handleChange}/><br></br><br></br>
+            ADDRESS<input  className="address" type="text" name="address" value={this.state.address} required  onChange={this.handleChange}/><br></br><br></br>
+            EMAIL:<input  className="email" type="email" name="email"  value={this.state.email} required  onChange={this.handleChange}/><br></br><br></br>
+            PASSWORD:<input  className="password" type="password" name="password"  value={this.state.password} required  onChange={this.handleChange}/><br></br><br></br>
+            DATE_OF_BIRTH:<input  className="date" type="date" name="dateOfBirth" value={moment(this.state.dateOfBirth).format("YYYY-MM-DD")} required  onChange={this.handleChange}/><br></br><br></br>
+            SECURITY QUESTION: <select className="security" defaultValue={this.state.security_Question} onClick={(event)=>this.handleClickSelect(event)}>
                                 <option value="what is your favorite color">what is your favorite color</option>
                                 <option value="what is your favorite fruit">what is your favorite fruit</option>
                                 <option value="what is your favorite place">what is your favorite place</option>
                               </select><br></br>
-            <input type="text" name="security_Answer" value={this.state.security_Answer} required  onChange={this.handleChange}/><br></br><br></br>
+            <input  className="answer" type="text" name="security_Answer" value={this.state.security_Answer} required  onChange={this.handleChange}/><br></br><br></br>
             <button type="submit">update</button>
+            
           </form>
         </center>
       </div>
@@ -153,22 +157,22 @@ class Registration extends Component{
           <center>
             <form onSubmit={(event) => this.handleClick(event)}>
               <h2> USER REGISTRATION</h2><br></br>
-              <img  className='circular' src={this.state.file}/><br></br>
+              <img  className='circular' src={this.state.file} alt=""/><br></br>
               <ReactFileReader handleFiles={this.handleFiles} base64={true}>
                 Upload_Image Here
                </ReactFileReader><br></br>
-              NAME:<input type="text" required name="name" value={this.state.name} onChange={this.handleChange}/><br></br><br></br>
-              PHONE_NUMBER:<input type="number" required name="phone_Number" value={this.state.phone_Number} onChange={this.handleChange}/><br></br><br></br>
-              ADDRESS<input type="text" name="address" required value={this.state.address} onChange={this.handleChange}/><br></br><br></br>
-              EMAIL:<input type="email" name="email" required value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
-              PASSWORD:<input type="text" name="password" required value={this.state.password} onChange={this.handleChange}/><br></br><br></br>
-              DATE_OF_BIRTH<input type="date" name="dateOfBirth" required value={moment(this.state.dateOfBirth).format("YYYY-MM-DD")} onChange={this.handleChange}/><br></br><br></br>
-              SECURITY QUESTION<select Value={this.state.security_Question} onClick={(event)=>this.handleClickSelect(event)}> 
+              NAME:<input className="name" type="text" required name="name" value={this.state.name} onChange={this.handleChange}/><br></br><br></br>
+              PHONE_NUMBER:<input  className="phone" type="number" required name="phone_Number" value={this.state.phone_Number} onChange={this.handleChange}/><br></br><br></br>
+              ADDRESS<input  className="address" type="text" name="address" required value={this.state.address} onChange={this.handleChange}/><br></br><br></br>
+              EMAIL:<input  className="email" type="email" name="email" required value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
+              PASSWORD:<input  className="password" type="text" name="password" required value={this.state.password} onChange={this.handleChange}/><br></br><br></br>
+              DATE_OF_BIRTH:<input  className="date" type="date" name="dateOfBirth" required value={moment(this.state.dateOfBirth).format("YYYY-MM-DD")} onChange={this.handleChange}/><br></br><br></br>
+              SECURITY QUESTION:<select className="security" Value={this.state.security_Question} onClick={(event)=>this.handleClickSelect(event)}> 
                                   <option value=" what is your favorite color"> what is your favorite color</option>
                                   <option value="what is your favorite fruit"> what is your favorite fruit</option>
                                   <option value="what is your favorite place"> what is your favorite place</option>
-                                </select><br></br>
-              <input type="text" name="security_Answer" required value={this.state.security_Answer} onChange={this.handleChange}/><br></br><br></br>
+                                </select><br></br><br></br>
+              ANSWER:<input  className="answer" type="text" name="security_Answer" required value={this.state.security_Answer} onChange={this.handleChange}/><br></br><br></br>
               <button type="submit">SUBMIT</button>
             </form>
           </center>

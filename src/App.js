@@ -22,6 +22,11 @@ class App extends Component {
               login
             </Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-4" href="/logout">
+              logout
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
       </div>
     )
