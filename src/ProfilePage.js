@@ -7,6 +7,15 @@ class ProfilePage extends Component {
   constructor(){
     super()
     this.state={
+      currentUser:{file:"",
+      name:"",
+      phone_Number:"",
+      email:"",
+      address:"",
+      dateOfBirth:"",
+      security_Question:"",
+      security_Answer:"",
+      password:""},
       update:true,
     }
   }
@@ -15,32 +24,49 @@ class ProfilePage extends Component {
       update:false,
     })
   }
-  
+  componentDidMount(){
+    fetch('http://localhost:8081/details', {
+      method: "GET",
+      dataType: "JSON",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(data => {
+      debugger
+      this.setState({currentUser: data})
+    });
+  }
   render() {
-    if (Boolean(this.props.location.state)) {
-      const { file,email, phone_Number, address} = this.props.location.state
-      const retrievedObject1 = localStorage.getItem('file');
-      const retrievedObject2 = localStorage.getItem('name');
-      const retrievedObject3 = localStorage.getItem('email');
-      const retrievedObject4 = localStorage.getItem('phone_Number');
-      const retrievedObject5= localStorage.getItem('address');
+    const _id = localStorage.getItem('_id');
+    const isLogin=localStorage.getItem('you_logedin');
+    const file = localStorage.getItem('file');
+    const name = localStorage.getItem('name');
+    const email = localStorage.getItem('email');
+    const phone_Number = localStorage.getItem('phone_Number');
+    const address= localStorage.getItem('address');
+    if (Boolean(isLogin)) {
+     
       if(this.state.update){
+        
       return (
         <div>
-          
           <Button onClick={this.handleClick}>Edit profile</Button>
-          <center>
-            <h3 className="center">WELCOME TO MY PAGE</h3><br></br>
-           
-            <img className="circular" src={retrievedObject1} alt=""/><br></br>  
-            Name:<h5>{retrievedObject2}</h5>
-            Email:<h5>{retrievedObject3}</h5>
-            Phone:<h5>{retrievedObject4}</h5>
-            Address:<h5>{retrievedObject5}</h5>
+          <center className="center">
+          <h3 className="center">welcome to my page{}</h3>
+            <h3 className="center">WELCOME <br></br>{name}</h3>
+            <img className="circular" src={file} alt=""/><br></br>  
+            DETAILS:-
+            <h5 >EMAIL:-&nbsp;&nbsp;{email}</h5>
+            <h5>MOBILE_NO:-&nbsp;&nbsp;{phone_Number}</h5>
+            <h5>ADDRESS:-&nbsp;&nbsp;{address}</h5>
           </center>
         </div>
       );}else{
-        return <Redirect to={{pathname:"/registration", state: this.props.location.state}}/>
+        return <Redirect to={{pathname:"/registration", _id}}/>
       }
     } else {
       return <Redirect to='/login'/>
