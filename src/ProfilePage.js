@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
-import {Button} from 'react-bootstrap';
 import './App.css';
+import './profile.css';
 import { Redirect } from 'react-router-dom';
 
 class ProfilePage extends Component {
   constructor(){
     super()
     this.state={
-      currentUser:{file:"",
-      name:"",
-      phone_Number:"",
-      email:"",
-      address:"",
-      dateOfBirth:"",
-      security_Question:"",
-      security_Answer:"",
-      password:""},
+      id:"",
+      currentUser:{},
       update:true,
     }
   }
@@ -25,48 +18,57 @@ class ProfilePage extends Component {
     })
   }
   componentDidMount(){
+    const _id = {_id:localStorage.getItem('_id')};
     fetch('http://localhost:8081/details', {
-      method: "GET",
-      dataType: "JSON",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-      }
+      },
+      body: JSON.stringify(_id)
     })
     .then(res => {
       return res.json()
     })
     .then(data => {
-      debugger
+      console.log(data)
       this.setState({currentUser: data})
     });
   }
   render() {
-    const _id = localStorage.getItem('_id');
     const isLogin=localStorage.getItem('you_logedin');
-    const file = localStorage.getItem('file');
-    const name = localStorage.getItem('name');
-    const email = localStorage.getItem('email');
-    const phone_Number = localStorage.getItem('phone_Number');
-    const address= localStorage.getItem('address');
     if (Boolean(isLogin)) {
-     
-      if(this.state.update){
-        
+      if(this.state.update){ 
       return (
-        <div>
-          <Button onClick={this.handleClick}>Edit profile</Button>
-          <center className="center">
-          <h3 className="center">welcome to my page{}</h3>
-            <h3 className="center">WELCOME <br></br>{name}</h3>
-            <img className="circular" src={file} alt=""/><br></br>  
-            DETAILS:-
-            <h5 >EMAIL:-&nbsp;&nbsp;{email}</h5>
-            <h5>MOBILE_NO:-&nbsp;&nbsp;{phone_Number}</h5>
-            <h5>ADDRESS:-&nbsp;&nbsp;{address}</h5>
-          </center>
-        </div>
-      );}else{
-        return <Redirect to={{pathname:"/registration", _id}}/>
+        <center>
+          <div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="card hovercard">
+                    <div class="cardheader"></div>
+                      
+                    <div class="avatar">
+                      <img src={this.state.currentUser.file} alt=""/><br></br> 
+                    </div>
+                    <div class="info">
+                      <div class="title">
+                        <h3 className="center">WELCOME <br></br>{this.state.currentUser.name}</h3>
+                      </div>
+                    </div> 
+                    DETAILS:-
+                    <div class="desc">{this.state.currentUser.email}</div>
+                    <div class="desc">{this.state.currentUser.phone_Number}</div>
+                    <div class="desc">{this.state.currentUser.address}</div>
+                    </div> 
+                    <button onClick={this.handleClick}>Edit profile</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </center>
+      );}
+      else{
+        return <Redirect to={{pathname:"/registration",}}/>
       }
     } else {
       return <Redirect to='/login'/>

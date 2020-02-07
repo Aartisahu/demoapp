@@ -5,8 +5,8 @@ import './App.css';
  class Home extends Component{
    render(){
      return(
-       <div><center>
-         <img src={DemoImg} alt=""/>
+       <div ><center>
+         <img src={ DemoImg} alt=""/>
        <h4 className="center1">welcome to my home....... </h4>
        </center>
        </div>

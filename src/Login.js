@@ -1,6 +1,5 @@
 import React,{Component} from "react";
 import { Redirect } from "react-router-dom";
-import {Button} from 'react-bootstrap';
 import './App.css';
 class Login extends Component {
   constructor(){
@@ -75,7 +74,7 @@ class Login extends Component {
           email:<input className="login" required type="email" name='email'value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
           password:<input required type="password" name='password'value={this.state.password} onChange={this.handleChange}/><br></br><br></br>
           <h6 className="message">invalid email or password</h6>
-          <Button className="login" type='submit'>Login</Button>
+          <button className="login" type='submit'>Login</button>
         </form>
       </center>
     </div>
@@ -88,7 +87,7 @@ class Login extends Component {
               <form onSubmit={this.handleClick}>
                 email:<input className="login" required type="email" name='email'value={this.state.email} onChange={this.handleChange}/><br></br><br></br>
                 password:<input required type="password" name='password'value={this.state.password} onChange={this.handleChange}/><br></br><br></br>
-                <Button className="login" type='submit'>Login</Button>
+                <button className="login" type='submit'>Login</button>
               </form>
             </center>
           </div>

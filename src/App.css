@@ -12,6 +12,7 @@
   font-size: calc(10px + 2vmin);
   color:black;
 }
+
 .center{
   text-align: center;
   margin-top: 20px;
@@ -20,6 +21,7 @@
 
 
 .circular {
+  margin-top: 2%;
   border-radius: 300%;
   height: 10%;
   width: 10%
@@ -28,25 +30,28 @@
   margin-left: 5%;
 }
 .phone{
-  margin-right: 2%;
+  margin-right: 11%;
 }
 .address{
-  margin-left: 3%;
+  margin-left: 0%;
 }
 .email{
-  margin-left: 5%;
+  margin-left: 4%;
 }
 .password{
-  margin-left: 2%;
-}
-.date{
-  margin-left: 2%;
-}
-.security{
   margin-right: 4%;
 }
+.date{
+  margin-right: 4%;
+}
+.security{
+  margin-right: 17%;
+}
 .answer{
-margin-left: 4%;
+  margin-left: 1%;
+}
+.submit{
+  margin-bottom: 2%;
 }
 .login{
   margin-left: 2%;
@@ -56,4 +61,11 @@ margin-left: 4%;
 }
 .message{
   color: red;
+}
+.formborder{
+  border: 1px solid;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 6%;
+    background-color:rgb(170, 211, 228)
 }

@@ -5,20 +5,11 @@ componentDidMount(){
   localStorage.clear();
   window.location.href = '/home';
   }
-render(){
-return(
-  <div>
-  </div>
-)
-}
-
-
-
-
-
-
-
-
-
+ render(){
+    return(
+      <div>
+      </div>
+    )
+  }
 }
 export default Logout
